@@ -29,13 +29,11 @@ input.addEventListener('change', function(e) {
 list.addEventListener('click', function(e) {
 	let target = e.target, id;
 		console.log('target:', target);
-
-	switch (target.tagName) {
-		case 'BUTTON' :
+		console.log(target.tagName);
+	if(target.tagName === "BUTTON") {
 			id = target.parentNode.parentNode.id;
 			console.log("id: ", id);
 			store.dispatch(actions.deleteTodo(id));
-	  	break;
 	}
 });
 
