@@ -1,0 +1,249 @@
+/* All content here used from http://todomvc.com/examples/vanillajs/ */
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+body {
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 1.4em;
+  background: -webkit-linear-gradient(to right, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: #bc4629;
+	min-width: 230px;
+	max-width: 550px;
+	margin: 0 auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	font-weight: 300;
+}
+
+button,
+input[type="checkbox"] {
+	outline: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.todoapp {
+	background: #fff;
+	margin: 0 auto;
+	position: relative;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+							0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+.new-todo {
+
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.todoapp input::-webkit-input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #0b091f;
+}
+
+.todoapp input::-moz-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #0b091f;
+}
+
+.todoapp input::input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #0b091f;
+}
+
+h1 {
+	width: 100%;
+	font-size: 100px;
+	font-weight: 100;
+	text-align: center;
+	color: #e4e4e8;
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+}
+
+.new-todo,
+.edit {
+	position: relative;
+	margin: 0;
+	width: 100%;
+	font-size: 24px;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1.4em;
+	border: 0;
+	outline: none;
+	color: #0b091f;
+	padding: 6px;
+	border: 1px solid #999;
+	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+.new-todo {
+	padding: 16px 16px 16px 36px;
+	border: none;
+	background: rgba(0, 0, 0, 0.003);
+	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+}
+
+.view {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 25px;
+}
+
+
+.main {
+	position: relative;
+	z-index: 2;
+}
+
+label[for='toggle-all'] {
+	display: none;
+}
+
+.toggle-all {
+	position: absolute;
+	top: -55px;
+	left: -12px;
+	width: 60px;
+	height: 34px;
+	text-align: center;
+	border: none; /* Mobile Safari */
+}
+
+.todo-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.todo-list li {
+	position: relative;
+	font-size: 24px;
+	border-bottom: 1px solid #ededed;
+	cursor: pointer;
+}
+
+.todo-list li:last-child {
+	border-bottom: none;
+}
+
+.todo-list li.editing {
+	border-bottom: none;
+	padding: 0;
+}
+
+.todo-list li.editing .edit {
+	display: block;
+	width: 506px;
+	padding: 13px 17px 12px 17px;
+	margin: 0 0 0 43px;
+}
+
+.todo-list li.editing .view {
+	display: none;
+}
+
+.todo-list li label {
+	white-space: pre-line;
+	word-break: break-all;
+	padding: 15px 60px 15px 15px;
+	display: block;
+	line-height: 1.2;
+	transition: color 0.4s;
+}
+
+.todo-list li.completed label {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
+
+.todo-list li .destroy {
+	display: none;
+	position: relative;
+	transition: color 0.2s ease-out;
+	background-image: url('../img/trash.png');
+	background-repeat: none;
+	background-size: contain;
+	background-position: center;
+	width: 20px;
+	height: 20px;
+}
+
+.todo-list li:hover .destroy {
+	display: block;
+}
+
+.todo-list li .destroy:hover {
+	color: #af5b5e;
+}
+
+.todo-list li .destroy:after {
+	content: '';
+}
+/*
+	Hack to remove background from Mobile Safari.
+	Can't use it globally since it destroys checkboxes in Firefox
+*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.toggle-all,
+	.todo-list li .toggle {
+		background: none;
+	}
+
+	.todo-list li .toggle {
+		height: 40px;
+	}
+
+	.toggle-all {
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+		-webkit-appearance: none;
+		appearance: none;
+	}
+}
+
+@media (max-width: 430px) {
+	.footer {
+		height: 50px;
+	}
+
+	.filters {
+		bottom: 10px;
+	}
+}
