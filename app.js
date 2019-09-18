@@ -1,3 +1,6 @@
+import actions from '/actions.js';
+import rootReducer from '/reducers.js';
+
 const store = Redux.createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const input = document.querySelector('input');
 const list = document.querySelector('ul');
@@ -7,7 +10,7 @@ function render() {
 	let todos = store.getState().todos;
 	console.log('todos:',todos);
 
-    var html = todos.map(function(todo) {
+    const html = todos.map(function(todo) {
       return '<li id="' + todo.id + '">' +
 				'<div class="view">' +
 
@@ -39,7 +42,9 @@ list.addEventListener('click', function(e) {
 
 render();
 
-//It will be called any time an action is dispatched, 
+//subscribe
+
+//It will be called any time an action is dispatched,
 //and some part of the state tree may potentially have changed. 
 store.subscribe(render);
 

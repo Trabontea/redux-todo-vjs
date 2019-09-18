@@ -1,4 +1,6 @@
-const actions = {
+import types from '/actionTypes.js'
+
+const  actions = {
   addTodo: (text) => ({
 			type: types.ADD_TODO,
 			text
@@ -11,3 +13,5 @@ const actions = {
     }
   }
 };
+
+export default actions;

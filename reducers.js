@@ -1,3 +1,5 @@
+import types from '/actionTypes.js'
+
 const  initialState = [
   {
     text: 'Learn Redux',
@@ -30,3 +32,6 @@ const todos = (state, action) => {
 }
 
 let rootReducer = Redux.combineReducers({ todos });
+
+export default rootReducer;
+
